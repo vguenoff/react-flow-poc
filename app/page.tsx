@@ -1,9 +1,11 @@
 import DemoFlow from '@/components/DemoFlow'
+import SideMenu from '@/components/SideMenu'
 
 export default function Home() {
   return (
-    <main className="h-lvh w-lvw">
+    <div className="flex h-screen">
       <DemoFlow />
-    </main>
+      <SideMenu />
+    </div>
   )
 }

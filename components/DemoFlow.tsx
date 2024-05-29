@@ -90,7 +90,7 @@ function Flow() {
         fitView
       >
         <Controls />
-        <MiniMap />
+        {/* <MiniMap /> */}
         <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
       </ReactFlow>
     </>

@@ -13,20 +13,18 @@ export default function CustomNode({ data }: NodeProps) {
     >
       <h1>{data.label}</h1>
       <Handle type="target" position={Position.Left} id="l1" />
-      <div>
-        <Handle
-          type="source"
-          position={Position.Right}
-          id="r1"
-          style={{ top: '40%', transform: 'translateY(-40%)' }}
-        />
-        <Handle
-          type="source"
-          position={Position.Right}
-          id="r2"
-          style={{ top: '60%', transform: 'translateY(-60%)' }}
-        />
-      </div>
+      <Handle
+        type="source"
+        position={Position.Right}
+        id="r1"
+        style={{ top: '30%', transform: 'translateY(-30%)' }}
+      />
+      <Handle
+        type="source"
+        position={Position.Right}
+        id="r2"
+        style={{ top: '70%', transform: 'translateY(-70%)' }}
+      />
     </div>
   )
 }
