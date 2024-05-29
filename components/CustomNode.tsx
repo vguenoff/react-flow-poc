@@ -6,7 +6,7 @@ export default function CustomNode() {
 
   return (
     <div
-      className="bg-white p-5 border-2 rounded-lg"
+      className="rounded-lg border-2 bg-white p-5"
       onClick={customNodeClickHandler}
     >
       <h1>Custom node</h1>
