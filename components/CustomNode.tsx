@@ -1,17 +1,30 @@
 import { Handle, Position } from 'reactflow'
-import type { MouseEvent } from 'react'
+import { useState, type MouseEvent } from 'react'
 
 import type { NodeProps } from 'reactflow'
 
-export default function CustomNode({ data }: NodeProps) {
-  const customNodeClickHandler = (e: MouseEvent) => console.log('123', e.target)
+// export type Props = {
+//   onClickHandler: () => {}
+// }
+
+export type CounterData = {
+  initialCount?: number
+  label: string
+  onClickHandler: () => {}
+}
+
+export default function CounterNode(props: NodeProps<CounterData>) {
+  const [count, setCount] = useState(props.data?.initialCount ?? 0)
+
+  // export default function CustomNode({ data, onClickHandler }: NodeProps<Props>) {
+  // const customNodeClickHandler = (e: MouseEvent) => console.log('123', e.target)
 
   return (
     <div
       className="rounded-lg border-2 bg-white p-5"
-      onClick={customNodeClickHandler}
+      onClick={props.data?.onClickHandler}
     >
-      <h1>{data.label}</h1>
+      <h1>{props.data?.label}</h1>
       <Handle type="target" position={Position.Left} id="l1" />
       <Handle
         type="source"

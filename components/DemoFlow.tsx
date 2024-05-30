@@ -8,55 +8,20 @@ import ReactFlow, {
   BackgroundVariant,
   Controls,
   Edge,
-  MiniMap,
+  // MiniMap,
   Node,
   OnConnect,
   OnEdgesChange,
   OnNodesChange,
-  Position,
 } from 'reactflow'
+
+import initialNodes from '@/data/nodes'
+import initialEdges from '@/data/edges'
 
 import 'reactflow/dist/style.css'
 
 import CustomNode from './CustomNode'
 
-const initialNodes = [
-  {
-    id: 'node-0',
-    type: 'customNode',
-    position: { x: -300, y: 0 },
-    data: { label: 'node 0' },
-  },
-  {
-    id: 'node-1',
-    type: 'customNode',
-    position: { x: -50, y: 0 },
-    data: { label: 'node 1' },
-  },
-  {
-    id: 'node-2',
-    type: 'customNode',
-    targetPosition: Position.Left,
-    position: { x: 200, y: -100 },
-    data: { label: 'node 2' },
-  },
-  {
-    id: 'node-3',
-    type: 'customNode',
-    targetPosition: Position.Left,
-    position: { x: 200, y: 100 },
-    data: { label: 'node 3' },
-  },
-]
-
-const initialEdges = [
-  { id: 'edge-0', source: 'node-0', target: 'node-1' },
-  { id: 'edge-1', source: 'node-1', target: 'node-2', sourceHandle: 'r1' },
-  { id: 'edge-2', source: 'node-1', target: 'node-3', sourceHandle: 'r2' },
-]
-
-// we define the nodeTypes outside of the component to prevent re-renderings
-// we could also use useMemo inside the component
 const nodeTypes = { customNode: CustomNode }
 
 function Flow() {
