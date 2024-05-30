@@ -30,12 +30,15 @@ export type RFState = {
   setEdges: (edges: Edge[]) => void
   // updateNodeColor: (nodeId: string, color: string) => void
   updateNodeTitle: (nodeId: string, title: string) => void
+  currentNodeId?: string
+  setCurrentNodeId: (nodeId: string) => void
 }
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
 const useStore = create<RFState>((set, get) => ({
   nodes: initialNodes,
   edges: initialEdges,
+  currentNodeId: undefined,
   onNodesChange: (changes: NodeChange[]) => {
     set({
       nodes: applyNodeChanges(changes, get().nodes),
@@ -64,11 +67,11 @@ const useStore = create<RFState>((set, get) => ({
           // it's important to create a new object here, to inform React Flow about the changes
           node.data = { ...node.data, title }
         }
-
         return node
       }),
     })
   },
+  setCurrentNodeId: (nodeId: string) => set({ currentNodeId: nodeId }),
 }))
 
 export default useStore

@@ -5,16 +5,16 @@ import useStore, { NodeData } from '@/data/store'
 
 export default function CounterNode({ id, data }: NodeProps<NodeData>) {
   const updateNodeTitle = useStore(state => state.updateNodeTitle)
+  const setCurrentNodeId = useStore(state => state.setCurrentNodeId)
 
   return (
     <div
       className="rounded-lg border-2 bg-white p-5"
-      // onClick={props.data?.onClickHandler}
+      onClick={() => setCurrentNodeId(id)}
     >
-      {/* <h1></h1> */}
       <input
         type="text"
-        defaultValue={data?.title}
+        value={data?.title}
         onChange={evt => updateNodeTitle(id, evt.target.value)}
         className="nodrag"
       />
