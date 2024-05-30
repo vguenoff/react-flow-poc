@@ -1,22 +1,8 @@
 'use client'
-import { useCallback, useState } from 'react'
-import ReactFlow, {
-  addEdge,
-  applyEdgeChanges,
-  applyNodeChanges,
-  Background,
-  BackgroundVariant,
-  Controls,
-  Edge,
-  // MiniMap,
-  Node,
-  OnConnect,
-  OnEdgesChange,
-  OnNodesChange,
-} from 'reactflow'
+import ReactFlow, { Background, BackgroundVariant, Controls } from 'reactflow'
+import { useShallow } from 'zustand/react/shallow'
 
-import initialNodes from '@/data/nodes'
-import initialEdges from '@/data/edges'
+import useStore from '@/data/store'
 
 import 'reactflow/dist/style.css'
 
@@ -24,23 +10,18 @@ import CustomNode from './CustomNode'
 
 const nodeTypes = { customNode: CustomNode }
 
+// @ts-ignore state: any
+const selector = state => ({
+  nodes: state.nodes,
+  edges: state.edges,
+  onNodesChange: state.onNodesChange,
+  onEdgesChange: state.onEdgesChange,
+  onConnect: state.onConnect,
+})
+
 function Flow() {
-  const [nodes, setNodes] = useState<Node[]>(initialNodes)
-  const [edges, setEdges] = useState<Edge[]>(initialEdges)
-
-  const onNodesChange: OnNodesChange = useCallback(
-    changes => setNodes(nds => applyNodeChanges(changes, nds)),
-    [setNodes],
-  )
-
-  const onEdgesChange: OnEdgesChange = useCallback(
-    changes => setEdges(eds => applyEdgeChanges(changes, eds)),
-    [setEdges],
-  )
-
-  const onConnect: OnConnect = useCallback(
-    connection => setEdges(eds => addEdge(connection, eds)),
-    [setEdges],
+  const { nodes, edges, onNodesChange, onEdgesChange, onConnect } = useStore(
+    useShallow(selector),
   )
 
   return (
@@ -55,7 +36,6 @@ function Flow() {
         fitView
       >
         <Controls />
-        {/* <MiniMap /> */}
         <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
       </ReactFlow>
     </>
