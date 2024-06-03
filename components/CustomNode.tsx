@@ -18,7 +18,18 @@ export default function CounterNode({ id, data }: NodeProps<NodeData>) {
         onChange={evt => updateNodeTitle(id, evt.target.value)}
         className="nodrag"
       />
-      <Handle type="target" position={Position.Left} id="l1" />
+      <Handle
+        type="target"
+        position={Position.Left}
+        id="l1"
+        // style={{ top: '30%', transform: 'translateY(-30%)' }}
+      />
+      {/* <Handle
+        type="target"
+        position={Position.Left}
+        id="l2"
+        style={{ top: '70%', transform: 'translateY(-70%)' }}
+      /> */}
       <Handle
         type="source"
         position={Position.Right}
