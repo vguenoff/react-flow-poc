@@ -16,14 +16,14 @@ export default [
   {
     id: 'node-2',
     type: 'customNode',
-    targetPosition: Position.Left,
+    // targetPosition: Position.Left,
     position: { x: 200, y: -100 },
     data: { title: 'node 2' },
   },
   {
     id: 'node-3',
     type: 'customNode',
-    targetPosition: Position.Left,
+    // targetPosition: Position.Left,
     position: { x: 200, y: 100 },
     data: { title: 'node 3' },
   },
