@@ -1,4 +1,4 @@
-import { Position, type Node } from 'reactflow'
+import type { Node } from 'reactflow'
 
 export default [
   {
